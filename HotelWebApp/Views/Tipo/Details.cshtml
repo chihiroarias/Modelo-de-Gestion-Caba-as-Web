@@ -1,0 +1,48 @@
+﻿@model HotelMVC.Models.EntidadesModel.TipoModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Tipo</h4>
+    <hr />
+    <dl class="row">
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreInput)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreInput)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CostoxHuesped)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CostoxHuesped)
+        </dd>
+    </dl>
+</div>
+<div>
+    @ViewBag.Message 
+</div>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new {}) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div>
+    @Html.ActionLink("Eliminar", "Remove", new { nombre = Model.NombreInput }) |
+    <a asp-action="Index">Back to List</a>
+</div>

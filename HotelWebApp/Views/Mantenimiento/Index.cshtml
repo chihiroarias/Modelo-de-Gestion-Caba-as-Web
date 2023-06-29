@@ -1,0 +1,84 @@
+﻿@model IEnumerable<HotelMVC.Models.EntidadesModel.MantenimientoModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Mantenimientos de Cabania @ViewBag.cabId</h1>
+
+<p>
+    <a asp-controller="Cabania" asp-action="Index">Cabanias</a>
+</p>
+<h3>Filtrar mantenimientos entre 2 fechas</h3>
+@ViewBag.Message
+<div class="col-md-5">
+    <form asp-action="Index" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label for="fechain" class="control-label">Fecha Inicial</label>
+            <input type="datetime" name="fechain" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="fechafin" class="control-label">Fecha Inicial</label>
+            <input type="datetime" name="fechafin" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="cabId" value="@ViewBag.cabId" class="btn btn-primary" />
+            <div class="form-group">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MantenimientoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Costo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResponsableInput)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MantenimientoId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Costo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResponsableInput)
+                    </td>
+
+                </tr>
+            }
+        }
+    </tbody>
+    <div>
+        <p>@ViewBag.Message</p>
+    </div>
+</table>

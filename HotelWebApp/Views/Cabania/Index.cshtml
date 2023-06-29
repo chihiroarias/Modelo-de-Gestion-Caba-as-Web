@@ -1,0 +1,120 @@
+﻿@model IEnumerable<HotelMVC.Models.EntidadesModel.CabaniaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cabanias</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+    <div class="col-5">
+        <h3> Atributos por los cuales buscar</h3>
+        <form asp-action="Index" enctype="multipart/form-data">
+             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+            <label for="NameInput" class="control-label">Nombre</label>
+            <input type="text" name="NameInput" class="form-control" />
+            </div>   
+            <div class="form-group">
+                <label for="MaxPersonas" class="control-label">Minimo de Personas</label>
+                <input type="number" name= "MaxPersonas" class="form-control" />
+            </div>   
+            <div class="form-group form-check">
+            <label class="form-check-label" for="habilitada">   Solo habilitadas         </label>
+                <input class="form-check-input" type="checkbox" name="habilitada" value="true" /> 
+            </div>
+   
+        <div class="form-group">
+            <label for="tipoAsociado" class="control-label">Tipo de cabaña</label>
+            <select name="tipoAsociado" class="form-control">
+                <option value="9999999" selected>-- Seleccione un tipo --</option>
+                @foreach (var tipo in ViewBag.Tipos)
+                {
+                    <option value="@tipo.TipoId">@tipo.NombreInput</option>
+                }
+            </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div> @ViewBag.Message;</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameInput)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoAsociado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jacuzzi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilitada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxPersonas)
+            </th>
+            <th>
+                Miniatura
+            </th> 
+            <th>
+                Registrar Mantenimiento
+            </th> 
+            <th>
+                Listado de Mantenimientos
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameInput)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.TipoAsociado)
+             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jacuzzi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habilitada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxPersonas)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.ImgNombreInput)
+            </td>
+           
+            
+            <td>
+      
+                @Html.ActionLink("Agregar Mantenimiento", "Create", "Mantenimiento", new {  id=item.CabaniaId }) |
+                
+            </td>
+                <td>
+
+                    @Html.ActionLink("Listado de Mantenimientos", "Index" , "Mantenimiento", new {  idCab =item.CabaniaId }) |
+
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

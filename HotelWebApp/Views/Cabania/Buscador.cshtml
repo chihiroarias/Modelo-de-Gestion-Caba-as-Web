@@ -1,0 +1,40 @@
+﻿@model HotelMVC.Models.EntidadesModel.CabaniaModel
+
+@{
+    ViewData["Title"] = "Buscador";
+}
+
+<h1>Buscador</h1>
+
+<h4>CabaniaModel</h4>
+<hr />
+<h3>Inserte parametros de busqueda</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Buscar" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="idTipo" class="control-label">idTipo</label>
+                <input type="number" name="idTipo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="monto" class="control-label">monto máximo</label>
+                <input type="number" name="monto" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

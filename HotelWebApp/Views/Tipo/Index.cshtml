@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HotelMVC.Models.EntidadesModel.TipoModel>
+    
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<p>
+    <a asp-action="Buscarlo">Buscar por nombre</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NombreInput)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoxHuesped)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            @ViewBag.Message
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreInput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CostoxHuesped)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { nombre = item.NombreInput }) |
+                        @Html.ActionLink("Details", "Details", item) |
+                        @Html.ActionLink("Delete", "Delete", new { NombreInput = item.NombreInput })
+                    </td>
+                </tr>
+
+        }
+
+
+}
+    </tbody>
+</table>
+<div>
+    @ViewBag.Message
+</div>

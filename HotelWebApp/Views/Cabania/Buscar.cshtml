@@ -1,0 +1,73 @@
+﻿@model IEnumerable<HotelMVC.Models.EntidadesModel.CabaniaModel>
+
+@{
+    ViewData["Title"] = "Buscar";
+}
+
+<h1>Buscados</h1>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoAsociado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameInput)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jacuzzi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilitada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxPersonas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgNombreInput)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+ 
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoAsociado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameInput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Jacuzzi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Habilitada)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaxPersonas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImgNombreInput)
+                    </td>
+
+                </tr>
+            
+        }      
+            
+        
+    </tbody>
+</table>
+<div>@ViewBag.Message</div>
